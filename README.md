@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+import React, { useState, useEffect } from "react";
+import "../styles.css";
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+export default function Landing() {
+  const [selectedDate, setSelectedDate] = useState("");
 
-## Available Scripts
+  function useAnimatedNumber(target, duration = 1000) {
+    const [value, setValue] = useState(0);
+    useEffect(() => {
+      let start = 0;
+      const increment = target / (duration / 10);
+      const interval = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          start = target;
+          clearInterval(interval);
+        }
+        setValue(parseFloat(start.toFixed(2)));
+      }, 10);
+      return () => clearInterval(interval);
+    }, [target]);
+    return value;
+  }
 
-In the project directory, you can run:
+  function FlashCard({ title, value, icon }) {
+    const animatedVal = useAnimatedNumber(value);
+    const color = value >= 0 ? "green" : "red";
+    return (
+      <div className="card animated-card">
+        <h3>{icon} {title}</h3>
+        <p className={`amount-${color}`}>₹ {animatedVal.toLocaleString()}</p>
+      </div>
+    );
+  }
 
-### `npm start`
+  return (
+    <div className="landing-wrapper">
+      <div className="top-bar">
+        <h1>📊 Portfolio Manager</h1>
+        <input
+          type="date"
+          className="calendar-input"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+          title="Select date"
+        />
+      </div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+      <section className="summary-cards">
+        {/* Emoji Placeholder Static Cards */}
+        <div className="card net-worth">
+          <h3>🧮 Net Worth</h3>
+          <p>₹ <span className="amount-blue">1500000.00</span></p>
+          <small>{selectedDate ? `As of ${selectedDate}` : "Choose a date 📅"}</small>
+        </div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+        <div className="card profit-loss">
+          <h3>📉 Profit & Loss</h3>
+          <p>Profit: <span className="amount-green">₹ 23900.00</span></p>
+          <p>Loss: <span className="amount-red">₹ 1256.00</span></p>
+        </div>
 
-### `npm test`
+        <div className="card cash-bank">
+          <h3>🏦 Cash in Bank</h3>
+          <p>₹ <span className="amount-blue">17000.00</span></p>
+          <small>Only linked balances</small>
+        </div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+        {/* Animated FlashCards */}
+        <FlashCard title="Intra" value={5023.25} icon="📈" />
+        <FlashCard title="Gold" value={-1234.55} icon="🪙" />
+        <FlashCard title="U.S." value={12990.00} icon="💵" />
+      </section>
+    </div>
+  );
+}
