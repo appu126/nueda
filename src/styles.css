@@ -1,0 +1,217 @@
+
+/* styles.css */
+
+/* Navigation */
+.nav-container {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background-color: #eee;
+    justify-content: center;
+    font-weight: bold;
+  }
+  .nav-container a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+    background-color: #f2f2f2;
+  }
+  
+  /* Homepage */
+  .homepage {
+    padding: 20px;
+    background-color: #fafafa;
+  }
+  
+/* Ensure this doesn't leak to other pages */
+.landing-wrapper {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    color: #222;
+    background-color: #f8f9fa;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .emoji-icon {
+    font-size: 2rem;
+    background-color: #fff;
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+  
+  .live-time {
+    margin-left: auto;
+    font-weight: 500;
+  }
+  
+  .watchlist-btn {
+    padding: 0.5rem 1rem;
+    background: #007bff;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .summary-cards {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex: 1;
+  }
+  
+  .amount-green {
+    color: green;
+    font-weight: 600;
+  }
+  
+  .amount-red {
+    color: red;
+    font-weight: 600;
+  }
+  
+  .amount-blue {
+    color: #007bff;
+    font-weight: 600;
+  }
+  
+  .investment-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .tab-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: white;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .tab-btn:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .dashboard {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .calendar {
+    flex: 1;
+  }
+  
+  .calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .calendar th,
+  .calendar td {
+    text-align: center;
+    padding: 0.5rem;
+  }
+  
+  .calendar-date {
+    padding: 0.7rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .calendar-date:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .profit {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  .loss {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  .neutral {
+    background-color: #fdfdfe;
+  }
+  
+  .calendar-legend {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.3rem;
+  }
+  .dot.profit {
+    background-color: #28a745;
+  }
+  .dot.loss {
+    background-color: #dc3545;
+  }
+  .dot.neutral {
+    background-color: #6c757d;
+  }
+  
+  .investments {
+    flex: 1;
+  }
+  
+  .investment-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  .investment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .investment-bar {
+    height: 8px;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .investment-bar.gold {
+    background: linear-gradient(to right, gold 65%, #eee 65%);
+  }
+  .investment-bar.invest {
+    background: linear-gradient(to right, #28a745 100%, #eee 0%);
+  }
